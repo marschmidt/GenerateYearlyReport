@@ -953,9 +953,9 @@
     "restore": {
       "projectUniqueName": "GenerateYearlyReport",
       "projectName": "GenerateYearlyReport",
-      "projectPath": "C:\\Users\\user\\Documents\\GitHub\\UiTraining\\GenerateYearlyReport\\.local",
+      "projectPath": "C:\\Users\\user\\Documents\\GitHub\\GenerateYearlyReport\\.local",
       "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\user\\Documents\\GitHub\\UiTraining\\GenerateYearlyReport\\.local"
+      "outputPath": "C:\\Users\\user\\Documents\\GitHub\\GenerateYearlyReport\\.local"
     },
     "frameworks": {
       "net461": {

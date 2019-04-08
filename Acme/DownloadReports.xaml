@@ -1,12 +1,13 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="DownloadReports" this:DownloadReports.i_taxId="RO892123" this:DownloadReports.i_filePath="C:\Users\user\Downloads\" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="DownloadReports" this:DownloadReports.i_taxId="RO892123" this:DownloadReports.i_filePath="C:\Users\user\Downloads\" this:DownloadReports.i_year="[(CInt(Now.ToString(&quot;yyyy&quot;)) - 1).ToString]" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="i_taxId" Type="InArgument(x:String)" />
     <x:Property Name="i_filePath" Type="InArgument(x:String)" />
+    <x:Property Name="i_year" Type="InArgument(x:String)" />
   </x:Members>
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>476,2161</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>476,2121</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -59,7 +60,6 @@
   </TextExpression.ReferencesForImplementation>
   <Sequence DisplayName="DownloadReports" sap:VirtualizedContainerService.HintSize="436,2041" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
-      <Variable x:TypeArguments="x:String" Default="[(CInt(Now.ToString(&quot;yyyy&quot;)) - 1).ToString]" Name="p_previousYear" />
       <Variable x:TypeArguments="s:String[]" Default="[{&quot;January&quot;,&quot;February&quot;,&quot;March&quot;,&quot;April&quot;,&quot;May&quot;,&quot;June&quot;,&quot;July&quot;,&quot;August&quot;,&quot;September&quot;,&quot;October&quot;,&quot;November&quot;,&quot;December&quot;}]" Name="p_months" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
@@ -98,7 +98,7 @@
                 <ui:CursorPosition OffsetX="16" OffsetY="15" Position="TopLeft" />
               </ui:Click.CursorPosition>
               <ui:Click.Target>
-                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="5c4732aeccd7b9245003cc49f3967a37" Selector="[&quot;&lt;webctrl aaname='&quot;+p_previousYear+&quot;' parentid='searchForm' tag='SPAN' /&gt;&quot;]" WaitForReady="COMPLETE" />
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="5c4732aeccd7b9245003cc49f3967a37" Selector="[&quot;&lt;webctrl aaname='&quot;+i_year+&quot;' parentid='searchForm' tag='SPAN' /&gt;&quot;]" WaitForReady="COMPLETE" />
               </ui:Click.Target>
             </ui:Click>
             <ui:ForEach x:TypeArguments="x:Object" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="352,1050" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[p_months]">
@@ -168,7 +168,7 @@
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
                     </ui:WindowScope>
-                    <ui:InvokeCode ContinueOnError="{x:Null}" Code="If &quot;January&quot;.Equals(i_selectedMonth) Then&#xD;&#xA;&#x9;o_code = &quot;1&quot;&#xD;&#xA;Else If &quot;February&quot;.Equals(i_selectedMonth) Then&#xD;&#xA;&#x9;o_code = &quot;2&quot;&#xD;&#xA;Else If &quot;March&quot;.Equals(i_selectedMonth) Then&#xD;&#xA;&#x9;o_code = &quot;3&quot;&#xD;&#xA;Else If &quot;April&quot;.Equals(i_selectedMonth) Then&#xD;&#xA;&#x9;o_code = &quot;4&quot;&#xD;&#xA;Else If &quot;May&quot;.Equals(i_selectedMonth) Then&#xD;&#xA;&#x9;o_code = &quot;5&quot;&#xD;&#xA;Else If &quot;June&quot;.Equals(i_selectedMonth) Then&#xD;&#xA;&#x9;o_code = &quot;6&quot;&#xD;&#xA;Else If &quot;July&quot;.Equals(i_selectedMonth) Then&#xD;&#xA;&#x9;o_code = &quot;7&quot;&#xD;&#xA;Else If &quot;August&quot;.Equals(i_selectedMonth) Then&#xD;&#xA;&#x9;o_code = &quot;8&quot;&#xD;&#xA;Else If &quot;September&quot;.Equals(i_selectedMonth) Then&#xD;&#xA;&#x9;o_code = &quot;9&quot;&#xD;&#xA;Else If &quot;October&quot;.Equals(i_selectedMonth) Then&#xD;&#xA;&#x9;o_code = &quot;10&quot;&#xD;&#xA;Else If &quot;November&quot;.Equals(i_selectedMonth) Then&#xD;&#xA;&#x9;o_code = &quot;11&quot;&#xD;&#xA;Else If &quot;December&quot;.Equals(i_selectedMonth) Then&#xD;&#xA;&#x9;o_code = &quot;12&quot;&#xD;&#xA;Else &#xD;&#xA;&#x9;o_code = &quot;0&quot;&#xD;&#xA;End If &#xD;&#xA;&#xD;&#xA;" DisplayName="Invoke Code" sap:VirtualizedContainerService.HintSize="314,164" sap2010:WorkflowViewState.IdRef="InvokeCode_1">
+                    <ui:InvokeCode ContinueOnError="{x:Null}" Code="If &quot;January&quot;.Equals(i_selectedMonth) Then&#xA;&#x9;o_code = &quot;1&quot;&#xA;Else If &quot;February&quot;.Equals(i_selectedMonth) Then&#xA;&#x9;o_code = &quot;2&quot;&#xA;Else If &quot;March&quot;.Equals(i_selectedMonth) Then&#xA;&#x9;o_code = &quot;3&quot;&#xA;Else If &quot;April&quot;.Equals(i_selectedMonth) Then&#xA;&#x9;o_code = &quot;4&quot;&#xA;Else If &quot;May&quot;.Equals(i_selectedMonth) Then&#xA;&#x9;o_code = &quot;5&quot;&#xA;Else If &quot;June&quot;.Equals(i_selectedMonth) Then&#xA;&#x9;o_code = &quot;6&quot;&#xA;Else If &quot;July&quot;.Equals(i_selectedMonth) Then&#xA;&#x9;o_code = &quot;7&quot;&#xA;Else If &quot;August&quot;.Equals(i_selectedMonth) Then&#xA;&#x9;o_code = &quot;8&quot;&#xA;Else If &quot;September&quot;.Equals(i_selectedMonth) Then&#xA;&#x9;o_code = &quot;9&quot;&#xA;Else If &quot;October&quot;.Equals(i_selectedMonth) Then&#xA;&#x9;o_code = &quot;10&quot;&#xA;Else If &quot;November&quot;.Equals(i_selectedMonth) Then&#xA;&#x9;o_code = &quot;11&quot;&#xA;Else If &quot;December&quot;.Equals(i_selectedMonth) Then&#xA;&#x9;o_code = &quot;12&quot;&#xA;Else &#xA;&#x9;o_code = &quot;0&quot;&#xA;End If &#xA;&#xA;" DisplayName="Invoke Code" sap:VirtualizedContainerService.HintSize="314,164" sap2010:WorkflowViewState.IdRef="InvokeCode_1">
                       <ui:InvokeCode.Arguments>
                         <InArgument x:TypeArguments="x:String" x:Key="i_selectedMonth">[t_month.ToString]</InArgument>
                         <OutArgument x:TypeArguments="x:String" x:Key="o_code">[p_codeMonth]</OutArgument>
